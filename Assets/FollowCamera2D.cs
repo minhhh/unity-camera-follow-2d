@@ -53,9 +53,9 @@ namespace CustomCamera
         void Start ()
         {
             camera = GetComponent<Camera> ();
-            vertExtent = camera.orthographicSize;    
+            vertExtent = camera.orthographicSize;
             horzExtent = vertExtent * Screen.width / Screen.height;
-            deltaCenterVec = camera.ViewportToWorldPoint (new Vector3 (0.5f, 0.5f, 0)) 
+            deltaCenterVec = camera.ViewportToWorldPoint (new Vector3 (0.5f, 0.5f, 0))
                 - camera.ViewportToWorldPoint (new Vector3 (cameraCenterX, cameraCenterY, 0));
 
 
@@ -68,7 +68,7 @@ namespace CustomCamera
             isDeadZoneVertical = ((deadZoneType & Direction.Vertical) == Direction.Vertical) && isFollowVertical;
             tempVec = Vector3.one;
         }
-        
+
         void LateUpdate ()
         {
             if (target) {
@@ -104,11 +104,11 @@ namespace CustomCamera
                         tempVec.y = target.position.y + lowerDeadBound + deltaCenterVec.y;
                     }
                 }
-                
+
                 if (isBoundHorizontal) {
                     tempVec.x = Mathf.Clamp (tempVec.x, leftBound + vertExtent, rightBound - vertExtent);
                 }
-                
+
                 if (isBoundVertical) {
                     tempVec.y = Mathf.Clamp (tempVec.y, lowerBound + horzExtent, upperBound - horzExtent);
                 }
