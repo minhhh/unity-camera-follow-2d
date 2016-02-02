@@ -61,8 +61,8 @@ namespace CustomCamera
 
             isFollowHorizontal = (followType & Direction.Horizontal) == Direction.Horizontal;
             isFollowVertical = (followType & Direction.Vertical) == Direction.Vertical;
-            isBoundVertical = (boundType & Direction.Horizontal) == Direction.Horizontal;
-            isBoundHorizontal = (boundType & Direction.Vertical) == Direction.Vertical;
+            isBoundHorizontal = (boundType & Direction.Horizontal) == Direction.Horizontal;
+            isBoundVertical = (boundType & Direction.Vertical) == Direction.Vertical;
 
             isDeadZoneHorizontal = ((deadZoneType & Direction.Horizontal) == Direction.Horizontal) && isFollowHorizontal;
             isDeadZoneVertical = ((deadZoneType & Direction.Vertical) == Direction.Vertical) && isFollowVertical;
@@ -106,11 +106,11 @@ namespace CustomCamera
                 }
 
                 if (isBoundHorizontal) {
-                    tempVec.x = Mathf.Clamp (tempVec.x, leftBound + vertExtent, rightBound - vertExtent);
+                    tempVec.x = Mathf.Clamp (tempVec.x, leftBound + horzExtent, rightBound - horzExtent);
                 }
 
                 if (isBoundVertical) {
-                    tempVec.y = Mathf.Clamp (tempVec.y, lowerBound + horzExtent, upperBound - horzExtent);
+                    tempVec.y = Mathf.Clamp (tempVec.y, lowerBound + vertExtent, upperBound - vertExtent);
                 }
 
                 tempVec.z = transform.position.z;
